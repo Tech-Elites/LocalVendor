@@ -7,8 +7,11 @@ import android.app.AlertDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -23,15 +26,22 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class VendorLanding extends AppCompatActivity {
     private DatabaseReference mDatabase;
     String selectedStartTime, selectedEndTime;
+
+    ListView listView;
+    ArrayList<MenuClass>  arrayList = new ArrayList<>();
+    CustomAdapterMenu customAdapterMenu;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vendor_landing);
+        listView = findViewById(R.id.listViewMenu);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -62,6 +72,14 @@ public class VendorLanding extends AppCompatActivity {
             }
         });
 
+        makeListView();
+    }
+
+    public void makeListView(){
+        //MAKE IT DYNAMIC
+        arrayList.add(new MenuClass("PavBhaji","Butter",23,true));
+        customAdapterMenu=new CustomAdapterMenu(this,arrayList);
+        listView.setAdapter(customAdapterMenu);
     }
 
     public void updateLocationVendor(View view) {
@@ -76,12 +94,12 @@ public class VendorLanding extends AppCompatActivity {
         mTimePicker = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                if(selectedHour<10){
+                if(selectedHour<10 && selectedMinute<10) {
+                    selectedEndTime = ("0" + selectedHour + ":0" + selectedMinute);
+                }else if(selectedHour<10){
                     selectedEndTime=( "0"+selectedHour + ":" + selectedMinute);
                 }else if(selectedMinute<10){
                     selectedEndTime=( selectedHour + ":0" + selectedMinute);
-                }else if(selectedHour<10 && selectedMinute<10){
-                    selectedEndTime=( "0"+selectedHour + ":0" + selectedMinute);
                 }else {
                     selectedEndTime = (selectedHour + ":" + selectedMinute);
                 }
@@ -109,12 +127,12 @@ public class VendorLanding extends AppCompatActivity {
         mTimePicker = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                if(selectedHour<10){
+                if(selectedHour<10 && selectedMinute<10) {
+                    selectedStartTime = ("0" + selectedHour + ":0" + selectedMinute);
+                }else if(selectedHour<10){
                     selectedStartTime=( "0"+selectedHour + ":" + selectedMinute);
                 }else if(selectedMinute<10){
                     selectedStartTime=( selectedHour + ":0" + selectedMinute);
-                }else if(selectedHour<10 && selectedMinute<10){
-                    selectedStartTime=( "0"+selectedHour + ":0" + selectedMinute);
                 }else {
                     selectedStartTime = (selectedHour + ":" + selectedMinute);
                 }
