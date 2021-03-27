@@ -14,7 +14,6 @@ import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class RegistrationAsVendor extends AppCompatActivity {
 
@@ -53,7 +52,7 @@ public class RegistrationAsVendor extends AppCompatActivity {
                     .setPositiveButton("Ok", null)
                     .show();
         }
-        else if (!password.equals(confirmPassword)){
+        else if (password.compareTo(confirmPassword) != 0){
             new AlertDialog.Builder(this)
                     .setIcon(android.R.drawable.ic_dialog_info)
                     .setTitle("Password Invalid")
@@ -70,14 +69,12 @@ public class RegistrationAsVendor extends AppCompatActivity {
                     .show();
         }
         else{
-            Toast.makeText(this, "Here", Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(getApplicationContext(), RegistrationAsVendor2.class);
+            Intent i = new Intent(this, RegistrationAsVendorTwo.class);
             i.putExtra("firstname",firstName);
             i.putExtra("lastname",lastName);
             i.putExtra("email",email);
             i.putExtra("shopname",shopName);
             i.putExtra("password",password);
-
             startActivity(i);
         }
     }
