@@ -32,12 +32,12 @@
             android:text="Email ID" />
 
         <EditText
-            android:id="@+id/loginPageEmailId"
-            android:layout_width="299dp"
+            android:hint="abc@gmail.com"
+            android:id="@+id/editTextTextEmailAddress"
+            android:layout_width="298dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="abc@gmail.com"
-            android:inputType="textPersonName" />
+            android:inputType="textEmailAddress" />
 
         <TextView
             android:id="@+id/textView6"
