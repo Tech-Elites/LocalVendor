@@ -15,6 +15,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -26,6 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class locationSearchActivity extends AppCompatActivity {
@@ -33,11 +35,11 @@ public class locationSearchActivity extends AppCompatActivity {
     LocationManager locationManager;
     LocationListener locationListener;
     Button searchWithName, searchWithLocation, seeOnMapButton;
-    LatLng myLocation;
-    static LatLng[] allTheLocations;
+    static LatLng myLocation;
+    static ArrayList<LatLng> allTheLocations=new ArrayList<LatLng>();
     ListView listOfVendors;
-
-
+    static ArrayList<String> vendorNames=new ArrayList<String>();
+    ArrayAdapter<String> arrayAdapter;
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -64,6 +66,8 @@ public class locationSearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_search);
         listOfVendors=findViewById(R.id.listOfVendors);
+        arrayAdapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,vendorNames);
+        listOfVendors.setAdapter(arrayAdapter);
         searchWithLocation = findViewById(R.id.searchWithLocationButton);
         searchWithName = findViewById(R.id.searchWithNameButton);
         seeOnMapButton = findViewById(R.id.seeOnMapButton);
@@ -71,7 +75,7 @@ public class locationSearchActivity extends AppCompatActivity {
         seeOnMapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                searchWithLocationButton();
+                openMap();
             }
         });
         searchWithLocation.setOnClickListener(new View.OnClickListener() {
@@ -92,12 +96,23 @@ public class locationSearchActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                allTheLocations.clear();
+                vendorNames.clear();
+                //int i=0;
                 for(DataSnapshot dataSnapshot:snapshot.getChildren())
                 {
-                    Vendor v=snapshot.getValue(Vendor.class);
+                    Vendor v=dataSnapshot.getValue(Vendor.class);
                     HashMap<String,Object> hashMap=v.AddDataToUserDataBase();
-                    Toast.makeText(locationSearchActivity.this, ""+hashMap.get("lat"), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(locationSearchActivity.this, ""+hashMap.get("lat").toString(), Toast.LENGTH_SHORT).show();
+                    LatLng temp=new LatLng(Double.parseDouble(hashMap.get("lat").toString()),Double.parseDouble(hashMap.get("lng").toString()));
+
+                    allTheLocations.add(temp);
+                    vendorNames.add(hashMap.get("shopname").toString());
+
+                    //i++;
                 }
+                arrayAdapter.notifyDataSetChanged();
+                seeOnMapButton.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -110,8 +125,9 @@ public class locationSearchActivity extends AppCompatActivity {
         intent.putExtra("Long",myLocation.longitude);
         startActivity(intent);*/
     }
-    void searchWithLocationButton()
+    void openMap()
     {
+        startActivity(new Intent(this,locationActivity.class));
     }
     void LocationServices() {
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
@@ -122,6 +138,7 @@ public class locationSearchActivity extends AppCompatActivity {
                 myLocation = new LatLng(location.getLatitude(), location.getLongitude());
                 Toast.makeText(locationSearchActivity.this, ""+myLocation, Toast.LENGTH_SHORT).show();
                 locationManager.removeUpdates(locationListener);
+                fillTheList();
                 //seeOnMapButton.setVisibility(View.VISIBLE);
                 //call the function that can get the
             }
