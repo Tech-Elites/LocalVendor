@@ -101,13 +101,20 @@ public class locationSearchActivity extends AppCompatActivity {
                 //int i=0;
                 for(DataSnapshot dataSnapshot:snapshot.getChildren())
                 {
+
                     Vendor v=dataSnapshot.getValue(Vendor.class);
                     HashMap<String,Object> hashMap=v.AddDataToUserDataBase();
                     Toast.makeText(locationSearchActivity.this, ""+hashMap.get("lat").toString(), Toast.LENGTH_SHORT).show();
                     LatLng temp=new LatLng(Double.parseDouble(hashMap.get("lat").toString()),Double.parseDouble(hashMap.get("lng").toString()));
+                    float dis[]=new float[3];
+                    android.location.Location.distanceBetween(temp.latitude,temp.longitude,myLocation.latitude,myLocation.longitude,dis);
+                    Toast.makeText(locationSearchActivity.this, ""+dis[0], Toast.LENGTH_SHORT).show();
+                    if(dis[0]<3000)
+                    {
+                        allTheLocations.add(temp);
+                        vendorNames.add(hashMap.get("shopname").toString());
 
-                    allTheLocations.add(temp);
-                    vendorNames.add(hashMap.get("shopname").toString());
+                    }
 
                     //i++;
                 }
