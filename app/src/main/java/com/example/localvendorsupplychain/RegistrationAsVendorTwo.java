@@ -147,7 +147,7 @@ public class RegistrationAsVendorTwo extends AppCompatActivity {
                     if(user!=null)
                     {
                         Toast.makeText(RegistrationAsVendorTwo.this, "User here", Toast.LENGTH_SHORT).show();
-                        Vendor u=new Vendor(myLocation.latitude,myLocation.longitude,firstname,lastname,mobilenumber,email,shopname,homeaddress,shopaddress);
+                        Vendor u=new Vendor(Double.toString(myLocation.latitude),Double.toString(myLocation.longitude),firstname,lastname,mobilenumber,email,shopname,homeaddress,shopaddress);
                         HashMap<String, Object> newUserCreds = u.AddDataToUserDataBase();
                         FirebaseDatabase.getInstance().getReference().child("userinfo").child("vendors").child(user.getUid()).setValue(newUserCreds);
                         new AlertDialog.Builder(RegistrationAsVendorTwo.this)

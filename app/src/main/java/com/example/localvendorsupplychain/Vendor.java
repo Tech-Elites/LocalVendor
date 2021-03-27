@@ -5,13 +5,13 @@ import java.util.HashMap;
 public class Vendor {
     public String firstname, lastname, shopname;
     public String mobileno,emailid,homeaddress,shopaddress;
-    double lat,lng;
+    public String lat,lng;
 
     Vendor()
     {
 
     }
-    Vendor(double lat,double lng,String fn,String ln,String mn,String ei, String shop, String had, String sad)
+    Vendor(String lat,String lng,String fn,String ln,String mn,String ei, String shop, String had, String sad)
     {
         firstname=fn;
         lastname=ln;
