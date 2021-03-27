@@ -31,6 +31,7 @@ public class RegistrationAsUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_as_user);
+        auth=FirebaseAuth.getInstance();
     }
 
     public void UserRegisterSubmit(View view) {
@@ -107,7 +108,9 @@ public class RegistrationAsUser extends AppCompatActivity {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         finish();
-                                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                        Intent i = new Intent(getApplicationContext(),MainActivity.class);
+                                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        startActivity(i);
                                     }
                                 })
                                 .show();
