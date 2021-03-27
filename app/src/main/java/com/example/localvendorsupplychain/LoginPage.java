@@ -48,7 +48,7 @@ public class LoginPage extends AppCompatActivity {
                         if(u.getUid().compareTo(dataSnapshot.getKey())==0)
                         {
                             flag=0;
-                            Intent i = new Intent(LoginPage.this, locationSearchActivity.class);
+                            Intent i = new Intent(LoginPage.this, UserLandingPage.class);
                             i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(i);
                             break;
@@ -109,7 +109,7 @@ public class LoginPage extends AppCompatActivity {
                                         if(u.getUid().compareTo(dataSnapshot.getKey())==0)
                                         {
                                             flag=0;
-                                            Intent i = new Intent(LoginPage.this, locationSearchActivity.class);
+                                            Intent i = new Intent(LoginPage.this, UserLandingPage.class);
                                             i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                             startActivity(i);
                                             break;

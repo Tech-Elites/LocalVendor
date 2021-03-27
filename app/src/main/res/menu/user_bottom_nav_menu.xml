@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <item android:title="Search" android:icon="@drawable/ic_baseline_search_24" android:id="@+id/userSearchFragment"/>
     <item android:title="Feed" android:icon="@drawable/ic_baseline_beach_access_24" android:id="@+id/userFeedFragment"/>
-    <item android:title="Account" android:icon="@drawable/ic_baseline_supervisor_account_24" android:id="@+id/userAccountFragment"/>
 </menu>

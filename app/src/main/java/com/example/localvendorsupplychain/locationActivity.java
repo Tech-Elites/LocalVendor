@@ -46,11 +46,11 @@ public class locationActivity extends FragmentActivity implements OnMapReadyCall
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        mMap.addMarker(new MarkerOptions().position(locationSearchActivity.myLocation).title("You").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(locationSearchActivity.myLocation,15));
-        for(int i=0;i<locationSearchActivity.vendorNames.size();i++)
+        mMap.addMarker(new MarkerOptions().position(UserFeedFragment.myLocation).title("You").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UserFeedFragment.myLocation,15));
+        for(int i=0;i<UserFeedFragment.vendorNames.size();i++)
         {
-            mMap.addMarker(new MarkerOptions().position(locationSearchActivity.allTheLocations.get(i)).title(locationSearchActivity.vendorNames.get(i)));
+            mMap.addMarker(new MarkerOptions().position(UserFeedFragment.allTheLocations.get(i)).title(UserFeedFragment.vendorNames.get(i)));
         }
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
