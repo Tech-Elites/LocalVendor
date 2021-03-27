@@ -101,6 +101,7 @@ public class locationSearchActivity extends AppCompatActivity {
                 //int i=0;
                 for(DataSnapshot dataSnapshot:snapshot.getChildren())
                 {
+
                     Vendor v=dataSnapshot.getValue(Vendor.class);
                     HashMap<String,Object> hashMap=v.AddDataToUserDataBase();
                     Toast.makeText(locationSearchActivity.this, ""+hashMap.get("lat").toString(), Toast.LENGTH_SHORT).show();
