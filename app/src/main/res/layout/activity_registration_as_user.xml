@@ -62,8 +62,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="abc@gmail.com"
-            android:inputType="textPersonName"
-            android:text="" />
+            android:inputType="textEmailAddress" />
 
         <TextView
             android:id="@+id/textView13"

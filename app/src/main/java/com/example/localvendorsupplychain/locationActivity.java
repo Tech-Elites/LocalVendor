@@ -2,6 +2,8 @@ package com.example.localvendorsupplychain;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -9,20 +11,25 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class locationActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-
+    private LatLng userLocation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent=getIntent();
+        userLocation=new LatLng(intent.getDoubleExtra("Lat",0),intent.getDoubleExtra("Long",0));
+
         setContentView(R.layout.activity_location);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
     }
 
     /**
@@ -39,8 +46,15 @@ public class locationActivity extends FragmentActivity implements OnMapReadyCall
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+        mMap.addMarker(new MarkerOptions().position(userLocation).title("Marker in Sydney"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation,15));
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+
+                return false;
+            }
+        });
     }
 }
