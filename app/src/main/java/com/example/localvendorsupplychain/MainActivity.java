@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToMap(View view) {
-        Intent i = new Intent(this, locationActivity.class);
+        Intent i = new Intent(this, locationSearchActivity.class);
         startActivity(i);
     }
 }
