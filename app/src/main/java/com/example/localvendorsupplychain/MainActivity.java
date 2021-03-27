@@ -32,13 +32,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void goToLogin(View view) {
-        Intent i = new Intent(this, UserLandingPage.class);
+    public void goToMap(View view) {
+        Intent i = new Intent(this, locationSearchActivity.class);
         startActivity(i);
     }
 
-    public void goToMap(View view) {
+    public void goToLogin(View view) {
         Intent i = new Intent(this, LoginPage.class);
+        startActivity(i);
+    }
+
+
+    public void goToVendorLanding(View view) {
+        Intent i = new Intent(this, VendorLanding.class);
         startActivity(i);
     }
 }

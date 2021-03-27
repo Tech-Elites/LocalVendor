@@ -48,7 +48,9 @@ public class LoginPage extends AppCompatActivity {
                         if(u.getUid().compareTo(dataSnapshot.getKey())==0)
                         {
                             flag=0;
-                            startActivity(new Intent(getApplicationContext(),locationSearchActivity.class));
+                            Intent i = new Intent(LoginPage.this, locationSearchActivity.class);
+                            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(i);
                             break;
                         }
                     }
@@ -57,7 +59,9 @@ public class LoginPage extends AppCompatActivity {
                         Toast.makeText(LoginPage.this, "A vendor is here", Toast.LENGTH_SHORT).show();
                         //vendor code here
                         //for now signing out
-                        FirebaseAuth.getInstance().signOut();
+                        Intent i = new Intent(LoginPage.this, VendorLanding.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(i);
                     }
                 }
 
@@ -105,7 +109,9 @@ public class LoginPage extends AppCompatActivity {
                                         if(u.getUid().compareTo(dataSnapshot.getKey())==0)
                                         {
                                             flag=0;
-                                            startActivity(new Intent(getApplicationContext(),locationSearchActivity.class));
+                                            Intent i = new Intent(LoginPage.this, locationSearchActivity.class);
+                                            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                            startActivity(i);
                                             break;
                                         }
                                     }
@@ -114,7 +120,9 @@ public class LoginPage extends AppCompatActivity {
                                         Toast.makeText(LoginPage.this, "A vendor is here", Toast.LENGTH_SHORT).show();
                                         //vendor code here
                                         //for now signing out
-                                        FirebaseAuth.getInstance().signOut();
+                                        Intent i = new Intent(LoginPage.this, VendorLanding.class);
+                                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        startActivity(i);
                                     }
                                 }
 
