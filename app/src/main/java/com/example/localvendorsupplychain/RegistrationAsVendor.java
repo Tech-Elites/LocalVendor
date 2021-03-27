@@ -52,7 +52,7 @@ public class RegistrationAsVendor extends AppCompatActivity {
                     .setPositiveButton("Ok", null)
                     .show();
         }
-        else if (!password.equals(confirmPassword)){
+        else if (password.compareTo(confirmPassword) != 0){
             new AlertDialog.Builder(this)
                     .setIcon(android.R.drawable.ic_dialog_info)
                     .setTitle("Password Invalid")
@@ -69,7 +69,7 @@ public class RegistrationAsVendor extends AppCompatActivity {
                     .show();
         }
         else{
-            Intent i = new Intent(this, RegistrationAsVendor2.class);
+            Intent i = new Intent(this, RegistrationAsVendorTwo.class);
             i.putExtra("firstname",firstName);
             i.putExtra("lastname",lastName);
             i.putExtra("email",email);

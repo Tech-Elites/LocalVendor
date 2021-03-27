@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistrationAsVendor2">
+    tools:context=".RegistrationAsVendorTwo">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="20dp">
+        tools:layout_editor_absoluteX="204dp"
+        tools:layout_editor_absoluteY="207dp"
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/textView27"
@@ -69,7 +71,6 @@
             android:layout_height="wrap_content"
             android:onClick="VendorRegisterSubmit"
             android:text="Button" />
-
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
