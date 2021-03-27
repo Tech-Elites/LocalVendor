@@ -14,6 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class RegistrationAsVendor extends AppCompatActivity {
 
@@ -69,12 +70,14 @@ public class RegistrationAsVendor extends AppCompatActivity {
                     .show();
         }
         else{
-            Intent i = new Intent(this, RegistrationAsVendor2.class);
+            Toast.makeText(this, "Here", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(getApplicationContext(), RegistrationAsVendor2.class);
             i.putExtra("firstname",firstName);
             i.putExtra("lastname",lastName);
             i.putExtra("email",email);
             i.putExtra("shopname",shopName);
             i.putExtra("password",password);
+
             startActivity(i);
         }
     }

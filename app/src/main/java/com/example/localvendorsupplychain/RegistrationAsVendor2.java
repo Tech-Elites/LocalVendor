@@ -33,21 +33,22 @@ public class RegistrationAsVendor2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_as_vendor2);
-        auth= FirebaseAuth.getInstance();
+        Toast.makeText(this, "here", Toast.LENGTH_SHORT).show();
+        /*auth= FirebaseAuth.getInstance();
 
         Bundle b = getIntent().getExtras();
         firstname = b.getString("firstname");
         lastname = b.getString("lastname");
         email = b.getString("email");
         shopname = b.getString("shopname");
-        password = b.getString("password");
+        password = b.getString("password");*/
 
     }
 
     public void VendorRegisterSubmit(View view) {
-        EditText t1 = (EditText) findViewById(R.id.VendorMobile);
+        EditText t1 = findViewById(R.id.VendorMobile);
         mobilenumber = t1.getText().toString();
-        EditText t2 = (EditText) findViewById(R.id.VendorHomeAddress);
+        EditText t2 = findViewById(R.id.VendorHomeAddress);
         homeaddress = t2.getText().toString();
 
         if(TextUtils.isEmpty(mobilenumber) || TextUtils.isEmpty(homeaddress)){
