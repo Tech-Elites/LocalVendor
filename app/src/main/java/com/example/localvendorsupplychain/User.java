@@ -3,8 +3,8 @@ package com.example.localvendorsupplychain;
 import java.util.HashMap;
 
 public class User {
-    public String firstName,lastName;
-    public String mobileNo,EmailId;
+    public String firstname,lastname;
+    public String mobileno,emailid;
 
 
     User()
@@ -13,19 +13,19 @@ public class User {
     }
     User(String fn,String ln,String mn,String ei)
     {
-        firstName=fn;
-        lastName=ln;
-        mobileNo=mn;
-        EmailId=ei;
+        firstname=fn;
+        lastname=ln;
+        mobileno=mn;
+        emailid=ei;
 
     }
     public HashMap<String, Object> AddDataToUserDataBase()
     {
         HashMap<String,Object> newUser=new HashMap<>();
-        newUser.put("firstName",firstName);
-        newUser.put("lastName",lastName);
-        newUser.put("mobileNo",mobileNo);
-        newUser.put("EmailId",EmailId);
+        newUser.put("firstname",firstname);
+        newUser.put("lastname",lastname);
+        newUser.put("mobileno",mobileno);
+        newUser.put("emailid",emailid);
         return  newUser;
     }
 }

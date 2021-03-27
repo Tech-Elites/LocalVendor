@@ -97,11 +97,8 @@ public class RegistrationAsUser extends AppCompatActivity {
                     {
                         Toast.makeText(RegistrationAsUser.this, "User here", Toast.LENGTH_SHORT).show();
                         User u=new User(firstNameS,lastNameS,mobileNoS,newEmail);
-                        HashMap<String, Object> newUserCreds=u.AddDataToUserDataBase();
-                        FirebaseDatabase.getInstance().getReference().child("UserInfo").child(user.getUid()).setValue(newUserCreds);
-                        FirebaseDatabase.getInstance().getReference().child("UserListF").child(user.getUid()).child("followers").child("count").setValue(0);
-                        FirebaseDatabase.getInstance().getReference().child("UserListF").child(user.getUid()).child("following").child("count").setValue(0);
-                        FirebaseDatabase.getInstance().getReference().child("UserPosts").child(user.getUid()).child("count").setValue(0);
+                        HashMap<String, Object> newUserCreds = u.AddDataToUserDataBase();
+                        FirebaseDatabase.getInstance().getReference().child("userinfo").child("customers").child(user.getUid()).setValue(newUserCreds);
                         new AlertDialog.Builder(RegistrationAsUser.this)
                                 .setIcon(android.R.drawable.ic_dialog_alert)
                                 .setTitle("Success")
@@ -114,9 +111,7 @@ public class RegistrationAsUser extends AppCompatActivity {
                                     }
                                 })
                                 .show();
-
                     }
-
                 }
                 else
                 {

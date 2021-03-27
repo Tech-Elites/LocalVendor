@@ -20,6 +20,7 @@ public class RegistrationAsVendor extends AppCompatActivity {
 
     }
 
-    public void VendorRegisterSubmit(View view) {
+
+    public void VendorRegisterNext(View view) {
     }
 }
