@@ -41,13 +41,12 @@ public class locationSearchActivity extends AppCompatActivity {
 
     }
 
-    void getTheCurrentLocation() {
-
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(this, "Here", Toast.LENGTH_SHORT).show();
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+    void searchFromCurrentLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
         }
-
+        Toast.makeText(this, "Here", Toast.LENGTH_SHORT).show();
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
     }
 
     @Override
@@ -55,9 +54,9 @@ public class locationSearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_search);
 
-        searchWithLocation=findViewById(R.id.searchWithLocationButton);
-        searchWithName=findViewById(R.id.searchWithNameButton);
-        seeOnMapButton=findViewById(R.id.seeOnMapButton);
+        searchWithLocation = findViewById(R.id.searchWithLocationButton);
+        searchWithName = findViewById(R.id.searchWithNameButton);
+        seeOnMapButton = findViewById(R.id.seeOnMapButton);
         seeOnMapButton.setVisibility(View.INVISIBLE);
         seeOnMapButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,16 +67,14 @@ public class locationSearchActivity extends AppCompatActivity {
         searchWithLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getTheCurrentLocation();
+                searchFromCurrentLocation();
             }
         });
         LocationServices();
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+          ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         }
-
-
     }
     void searchWithLocationButton()
     {
