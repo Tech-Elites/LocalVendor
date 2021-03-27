@@ -76,12 +76,12 @@ public class VendorLanding extends AppCompatActivity {
         mTimePicker = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                if(selectedHour<10){
+                if(selectedHour<10 && selectedMinute<10) {
+                    selectedEndTime = ("0" + selectedHour + ":0" + selectedMinute);
+                }else if(selectedHour<10){
                     selectedEndTime=( "0"+selectedHour + ":" + selectedMinute);
                 }else if(selectedMinute<10){
                     selectedEndTime=( selectedHour + ":0" + selectedMinute);
-                }else if(selectedHour<10 && selectedMinute<10){
-                    selectedEndTime=( "0"+selectedHour + ":0" + selectedMinute);
                 }else {
                     selectedEndTime = (selectedHour + ":" + selectedMinute);
                 }
@@ -109,12 +109,12 @@ public class VendorLanding extends AppCompatActivity {
         mTimePicker = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                if(selectedHour<10){
+                if(selectedHour<10 && selectedMinute<10) {
+                    selectedStartTime = ("0" + selectedHour + ":0" + selectedMinute);
+                }else if(selectedHour<10){
                     selectedStartTime=( "0"+selectedHour + ":" + selectedMinute);
                 }else if(selectedMinute<10){
                     selectedStartTime=( selectedHour + ":0" + selectedMinute);
-                }else if(selectedHour<10 && selectedMinute<10){
-                    selectedStartTime=( "0"+selectedHour + ":0" + selectedMinute);
                 }else {
                     selectedStartTime = (selectedHour + ":" + selectedMinute);
                 }
