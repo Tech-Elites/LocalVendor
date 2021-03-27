@@ -57,7 +57,10 @@ public class LoginPage extends AppCompatActivity {
                     {
                         Toast.makeText(LoginPage.this, "Logged in", Toast.LENGTH_SHORT).show();
                         finish();
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                        //change here
+                        Intent i = new Intent(getApplicationContext(),MainActivity.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(i);
                     }
                     else
                     {

@@ -5,12 +5,13 @@ import java.util.HashMap;
 public class Vendor {
     public String firstname, lastname, shopname;
     public String mobileno,emailid,homeaddress,shopaddress;
+    double lat,lng;
 
     Vendor()
     {
 
     }
-    Vendor(String fn,String ln,String mn,String ei, String shop, String had, String sad)
+    Vendor(double lat,double lng,String fn,String ln,String mn,String ei, String shop, String had, String sad)
     {
         firstname=fn;
         lastname=ln;
@@ -19,6 +20,8 @@ public class Vendor {
         shopname=shop;
         homeaddress=had;
         shopaddress=sad;
+        this.lat=lat;
+        this.lng=lng;
     }
     public HashMap<String, Object> AddDataToUserDataBase()
     {
@@ -30,6 +33,8 @@ public class Vendor {
         newUser.put("shopname",shopname);
         newUser.put("homeaddress",homeaddress);
         newUser.put("shopaddress",shopaddress);
+        newUser.put("lat",lat);
+        newUser.put("lng",lng);
         return  newUser;
     }
 }

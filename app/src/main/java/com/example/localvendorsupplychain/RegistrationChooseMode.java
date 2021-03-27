@@ -20,7 +20,7 @@ public class RegistrationChooseMode extends AppCompatActivity {
     }
 
     public void RegisterAsVendor(View view) {
-        Intent i = new Intent(this, RegistrationAsVendor2.class);
+        Intent i = new Intent(this, RegistrationAsVendor.class);
         startActivity(i);
     }
 }
