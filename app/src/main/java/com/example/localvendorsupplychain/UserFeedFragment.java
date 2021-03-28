@@ -274,10 +274,6 @@ public class UserFeedFragment extends Fragment {
 
             }
         });
-        /*Intent intent=new Intent(this,locationActivity.class);
-        intent.putExtra("Lat",myLocation.latitude);
-        intent.putExtra("Long",myLocation.longitude);
-        startActivity(intent);*/
     }
     void openMap()
     {
