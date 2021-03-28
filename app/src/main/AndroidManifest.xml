@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LocalVendorSupplyChain">
-        <activity android:name=".CustToVendorLanding"></activity>
+        <activity android:name=".addNewMenu"></activity>
+        <activity android:name=".CustToVendorLanding" />
         <activity android:name=".VendorLanding" />
         <activity android:name=".UserLandingPage" />
         <activity android:name=".RegistrationAsVendorTwo" />

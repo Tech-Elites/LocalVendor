@@ -14,6 +14,8 @@ import androidx.annotation.Nullable;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class CustomAdapterMenu extends ArrayAdapter<MenuClass>{
@@ -47,10 +49,8 @@ public class CustomAdapterMenu extends ArrayAdapter<MenuClass>{
         textView2.setText(menuClass.getDesc());
         TextView textView3 = currentItemView.findViewById(R.id.MenuItemPrice);
         textView3.setText(String.valueOf(menuClass.getPrice()));
-        Switch textView4 = currentItemView.findViewById(R.id.MenuItemVeg);
-        if(menuClass.isVeg().compareToIgnoreCase("yes")==0){
-            textView4.setChecked(true);
-        }
+        TextView textView4 = currentItemView.findViewById(R.id.MenuItemVeg);
+        textView4.setText(String.valueOf(menuClass.getVeg()));
 
         return currentItemView;
     }

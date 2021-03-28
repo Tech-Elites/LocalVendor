@@ -74,6 +74,20 @@
             android:onClick="updateWorkingHours"
             android:text="Update working hours" />
 
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="addMenu"
+            android:text="Add new menu" />
+
+        <TextView
+            android:id="@+id/textView28"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Current Menu:"
+            android:textSize="20dp"/>
+
         <ListView
             android:id="@+id/listViewMenu"
             android:layout_width="match_parent"

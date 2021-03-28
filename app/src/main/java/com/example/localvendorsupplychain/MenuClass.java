@@ -1,5 +1,7 @@
 package com.example.localvendorsupplychain;
 
+import java.util.HashMap;
+
 public class MenuClass {
     private String name;
     private String desc;
@@ -27,7 +29,17 @@ public class MenuClass {
         return price;
     }
 
-    public String isVeg() {
+    public String getVeg() {
         return veg;
+    }
+
+    public HashMap<String, Object> AddMenuToVendor()
+    {
+        HashMap<String,Object> newMenu=new HashMap<>();
+        newMenu.put("name",name);
+        newMenu.put("desc",desc);
+        newMenu.put("price",price);
+        newMenu.put("veg",veg);
+        return  newMenu;
     }
 }
