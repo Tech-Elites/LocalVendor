@@ -39,6 +39,8 @@ public class VendorLanding extends AppCompatActivity {
     ListView listView;
     ArrayList<MenuClass>  arrayList = new ArrayList<>();
     CustomAdapterMenu customAdapterMenu;
+
+    String shopnamepass, shopaddresspass, mobpass;
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater=getMenuInflater();
         menuInflater.inflate(R.menu.logout,menu);
@@ -82,6 +84,9 @@ public class VendorLanding extends AppCompatActivity {
                     Vendor v = task.getResult().getValue(Vendor.class);
 
                     try {
+                        shopnamepass=v.shopname;
+                        shopaddresspass=v.shopaddress;
+                        mobpass=v.mobileno;
                             name.setText(v.firstname+" "+v.lastname);
                         shopname.setText("Shop name:    "+v.shopname);
                          shopadd.setText("Shop Address: "+v.shopaddress);
@@ -201,5 +206,11 @@ public class VendorLanding extends AppCompatActivity {
     }
 
 
-
+    public void addNewPost(View view) {
+        Intent i = new Intent(this, addNewPostVendor.class);
+        i.putExtra("name",shopnamepass);
+        i.putExtra("address",shopaddresspass);
+        i.putExtra("mob",mobpass);
+        startActivity(i);
+    }
 }
