@@ -22,7 +22,7 @@
 
             <EditText
                 android:id="@+id/searchWithName"
-                android:layout_width="380dp"
+                android:layout_width="360dp"
                 android:layout_height="53dp"
                 android:layout_weight="1"
                 android:hint="Shop Name" />
@@ -40,7 +40,9 @@
         <ListView
             android:id="@+id/listOfVendors"
             android:layout_width="match_parent"
-            android:layout_height="420dp">
+            android:layout_height="420dp"
+            android:padding="10dp"
+            >
 
         </ListView>
 
@@ -50,11 +52,7 @@
             android:orientation="horizontal"
             android:paddingHorizontal="5dp">
 
-            <TextView
-                android:id="@+id/textView252323"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+
 
             <TextView
                 android:id="@+id/textView25"
@@ -64,11 +62,12 @@
                 android:gravity="center_vertical"
                 android:text="Search by location!!!"
                 android:textColor="#000000"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:padding="10dp"/>
 
             <Button
                 android:id="@+id/searchWithLocationButton"
-                android:layout_width="200dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/ic_baseline_my_location_24"

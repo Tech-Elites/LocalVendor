@@ -224,6 +224,7 @@ public class UserAccountFragment extends Fragment {
                 }
                 else
                 {
+
                     gettingTheAdv(vendorIds,0);
                 }
 
@@ -237,42 +238,43 @@ public class UserAccountFragment extends Fragment {
     }
     void gettingTheAdv(ArrayList<String> vendorid,int index)
     {
+
             DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("vendoradv").child(vendorid.get(index));
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    for(DataSnapshot snapshot1:snapshot.getChildren())
-                    {
+
+                    for(DataSnapshot snapshot1:snapshot.getChildren()) {
                         try {
                             custadvcont c=snapshot1.getValue(custadvcont.class);
 
                             arrayList.add(c);
-                        }
-                        catch (Exception e)
-                        {
-                            //Toast.makeText(getActivity(), ""+e.getMessage(), Toast.LENGTH_LONG).show();
-                        }
-
-                        if(index==(vendorIds.size()-1))
-                        {
-
-                            //adaptor here
-                            try {
-                                customAdaptor=new custTomAdvAdaptor(getActivity(),arrayList);
-                                lv.setAdapter(customAdaptor);
-
-                            }
-                            catch(Exception e)
-                            {
-                                //Toast.makeText(getActivity(), ""+e.getMessage(), Toast.LENGTH_LONG).show();
-                            }
-                        }
-                        else
-                        {
-                            gettingTheAdv(vendorid,index+1);
+                        } catch (Exception e) {
+                            Toast.makeText(getActivity(), ""+e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
+
+                    if(index==(vendorIds.size()-1))
+                    {
+
+
+                        try {
+                            customAdaptor=new custTomAdvAdaptor(getActivity(),arrayList);
+                            lv.setAdapter(customAdaptor);
+
+                        }
+                        catch(Exception e)
+                        {
+                            Toast.makeText(getActivity(), ""+e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                    else
+                    {
+
+                        gettingTheAdv(vendorid,index+1);
+                    }
                 }
+
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
