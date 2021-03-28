@@ -19,6 +19,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -72,6 +73,8 @@ public class RegistrationAsVendorTwo extends AppCompatActivity {
                 myLocation = new LatLng(location.getLatitude(), location.getLongitude());
                 Toast.makeText(RegistrationAsVendorTwo.this, ""+myLocation, Toast.LENGTH_SHORT).show();
                 locationManager.removeUpdates(locationListener);
+                TextView tvUpdate = findViewById(R.id.textView23);
+                tvUpdate.setText("Location Recorded.");
                 registerButton.setVisibility(View.VISIBLE);
                 //call the function that can get the
             }
