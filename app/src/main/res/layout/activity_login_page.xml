@@ -60,7 +60,7 @@
             <EditText
                 android:id="@+id/loginPageEmailId"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/text_box"
                 android:hint="abc@gmail.com"
                 android:ems="10"
@@ -82,7 +82,7 @@
             <EditText
                 android:id="@+id/loginPagePassword"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
                 android:inputType="textPassword"

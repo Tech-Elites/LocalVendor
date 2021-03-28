@@ -33,7 +33,7 @@
             android:id="@+id/textView8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#0048B5"
+            android:background="#3082FF"
             android:text="Choose a registration mode :" />
 
         <LinearLayout

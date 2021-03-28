@@ -65,6 +65,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="updateLocationVendor"
+            android:background="@drawable/button"
+            android:layout_marginBottom="5dp"
             android:text="Update location" />
 
         <Button
@@ -72,17 +74,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="updateWorkingHours"
-            android:text="Update working hours" />
+            android:text="Update working hours"
+            android:background="@drawable/button"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
 
             <Button
                 android:id="@+id/button2"
                 android:layout_width="185dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button"
                 android:onClick="addMenu"
                 android:layout_marginRight="5dp"
                 android:text="Add new menu" />
@@ -91,6 +96,7 @@
                 android:id="@+id/button10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button"
                 android:layout_weight="1"
                 android:onClick="addNewPost"
                 android:layout_marginLeft="5dp"
@@ -102,6 +108,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Current Menu:"
+            android:textStyle="bold"
             android:textSize="20dp"/>
 
         <ListView
