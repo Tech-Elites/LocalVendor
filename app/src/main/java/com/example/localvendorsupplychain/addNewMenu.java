@@ -56,7 +56,7 @@ public class addNewMenu extends AppCompatActivity {
                         MenuClass m=new MenuClass(name,desc,price,veg);
                         long count=task.getResult().getChildrenCount();
                         count++;
-                        FirebaseDatabase.getInstance().getReference().child("vendormenu").child(user.getUid()).child("m"+count).setValue(m.AddMenuToVendor());
+                        FirebaseDatabase.getInstance().getReference().child("vendormenu").child(user.getUid()).child("d"+count).setValue(m.AddMenuToVendor());
                     }
                     catch (Exception e){
                         System.out.println("SEAW"+e);

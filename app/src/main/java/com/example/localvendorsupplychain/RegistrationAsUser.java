@@ -108,7 +108,7 @@ public class RegistrationAsUser extends AppCompatActivity {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         finish();
-                                        Intent i = new Intent(getApplicationContext(),MainActivity.class);
+                                        Intent i = new Intent(getApplicationContext(),UserLandingPage.class);
                                         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                         startActivity(i);
                                     }
