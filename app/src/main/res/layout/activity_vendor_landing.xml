@@ -23,11 +23,11 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="124dp"
+                android:layout_width="50dp"
                 android:layout_height="150dp"
-                android:backgroundTint="#E35C5C"
                 android:layout_weight="1"
-                android:background="@drawable/ic_baseline_portrait_24" />
+                android:background="@drawable/ic_baseline_portrait_24"
+                android:backgroundTint="#E35C5C" />
 
             <TextView
                 android:id="@+id/VendorLandShopName"

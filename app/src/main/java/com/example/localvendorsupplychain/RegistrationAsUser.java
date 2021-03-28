@@ -31,6 +31,7 @@ public class RegistrationAsUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_as_user);
+        setTitle("Register");
         auth=FirebaseAuth.getInstance();
     }
 

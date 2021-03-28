@@ -67,6 +67,7 @@ public class VendorLanding extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vendor_landing);
         listView = findViewById(R.id.listViewMenu);
+        setTitle("Your Details");
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         mDatabase = FirebaseDatabase.getInstance().getReference();

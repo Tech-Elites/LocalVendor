@@ -27,6 +27,7 @@ public class addNewPostVendor extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_post_vendor);
+        setTitle("New Post");
 
         t1=findViewById(R.id.NewPostShopName);
         t2=findViewById(R.id.NewPostShopAdd);

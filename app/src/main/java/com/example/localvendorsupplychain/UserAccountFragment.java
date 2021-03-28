@@ -11,6 +11,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -105,6 +106,7 @@ public class UserAccountFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         lv=getView().findViewById(R.id.feedListView);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Feed");
         refreshField=getView().findViewById(R.id.refreshFeedButton);
         refreshField.setOnClickListener(new View.OnClickListener() {
             @Override

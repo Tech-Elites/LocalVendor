@@ -42,6 +42,7 @@ public class CustToVendorLanding extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cust_to_vendor_landing);
+        setTitle("Vendor Details");
         shopNameTextView=findViewById(R.id.shopNameCustToVendor);
         listOfMenu=findViewById(R.id.listOfMenuItemss);
         addressTextView=findViewById(R.id.shopAddCustToVendor);

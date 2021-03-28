@@ -32,7 +32,7 @@ public class LoginPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
-
+        getSupportActionBar().hide();
         firebaseAuth = FirebaseAuth.getInstance();
 
         FirebaseUser u= firebaseAuth.getCurrentUser();

@@ -104,6 +104,7 @@ public class RegistrationAsVendorTwo extends AppCompatActivity {
         registerButton=findViewById(R.id.VendorRegisterSubmit);
         registerButton.setVisibility(View.INVISIBLE);
         auth= FirebaseAuth.getInstance();
+        getSupportActionBar().hide();
 
         Bundle b = getIntent().getExtras();
         firstname = b.getString("firstname");
