@@ -26,6 +26,7 @@ public class UserLandingPage extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         super.onOptionsItemSelected(item);
+
         switch(item.getItemId())
         {
             case R.id.Logout:
@@ -42,6 +43,7 @@ public class UserLandingPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_landing_page);
+        setTitle("View Nearby Vendors");
 
         BottomNavigationView bnavview=findViewById(R.id.bottomNavigationView);
         NavController navController= Navigation.findNavController(this,R.id.fragment2);

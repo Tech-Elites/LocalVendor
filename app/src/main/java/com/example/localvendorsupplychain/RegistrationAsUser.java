@@ -31,11 +31,12 @@ public class RegistrationAsUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_as_user);
+        setTitle("Register");
         auth=FirebaseAuth.getInstance();
     }
 
     public void UserRegisterSubmit(View view) {
-        Toast.makeText(this, "here", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "here", Toast.LENGTH_SHORT).show();
         EditText emailAddressNew=findViewById(R.id.UserRegisterEmail);
         EditText passwordNew=findViewById(R.id.UserRegisterPassword);
         EditText confirmPassword=findViewById(R.id.UserRegisterConfirmPassword);
@@ -96,7 +97,7 @@ public class RegistrationAsUser extends AppCompatActivity {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     if(user!=null)
                     {
-                        Toast.makeText(RegistrationAsUser.this, "User here", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(RegistrationAsUser.this, "User here", Toast.LENGTH_SHORT).show();
                         User u=new User(firstNameS,lastNameS,mobileNoS,newEmail);
                         HashMap<String, Object> newUserCreds = u.AddDataToUserDataBase();
                         FirebaseDatabase.getInstance().getReference().child("userinfo").child("customers").child(user.getUid()).setValue(newUserCreds);

@@ -11,6 +11,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -87,7 +88,7 @@ public class UserAccountFragment extends Fragment {
         if (requestCode == 1) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(getActivity(), "Permission granted", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), "Permission granted", Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -105,6 +106,7 @@ public class UserAccountFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         lv=getView().findViewById(R.id.feedListView);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Feed");
         refreshField=getView().findViewById(R.id.refreshFeedButton);
         refreshField.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -171,7 +173,7 @@ public class UserAccountFragment extends Fragment {
             }
             catch (Exception e)
             {
-                Toast.makeText(getActivity(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
             return currentItemView;
@@ -184,7 +186,7 @@ public class UserAccountFragment extends Fragment {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Toast.makeText(getActivity(), "Here", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "Here", Toast.LENGTH_SHORT).show();
                 vendorIds.clear();
                 arrayList.clear();
                 //int i=0;
@@ -248,7 +250,7 @@ public class UserAccountFragment extends Fragment {
                         }
                         catch (Exception e)
                         {
-                            Toast.makeText(getActivity(), ""+e.getMessage(), Toast.LENGTH_LONG).show();
+                            //Toast.makeText(getActivity(), ""+e.getMessage(), Toast.LENGTH_LONG).show();
                         }
 
                         if(index==(vendorIds.size()-1))
@@ -262,7 +264,7 @@ public class UserAccountFragment extends Fragment {
                             }
                             catch(Exception e)
                             {
-                                Toast.makeText(getActivity(), ""+e.getMessage(), Toast.LENGTH_LONG).show();
+                                //Toast.makeText(getActivity(), ""+e.getMessage(), Toast.LENGTH_LONG).show();
                             }
                         }
                         else

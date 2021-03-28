@@ -12,6 +12,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -94,7 +95,7 @@ public class UserFeedFragment extends Fragment {
         if (requestCode == 1) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(getActivity(), "Permission granted", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), "Permission granted", Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -105,7 +106,7 @@ public class UserFeedFragment extends Fragment {
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
-        Toast.makeText(getActivity(), "Here", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), "Here", Toast.LENGTH_SHORT).show();
         whether_name=false;
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
     }
@@ -123,7 +124,7 @@ public class UserFeedFragment extends Fragment {
         }
         else
         {
-            Toast.makeText(getActivity(), "Enter something", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getActivity(), "Enter something", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -131,6 +132,7 @@ public class UserFeedFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Search");
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -288,7 +290,7 @@ public class UserFeedFragment extends Fragment {
             public void onLocationChanged(Location location) {
 
                 myLocation = new LatLng(location.getLatitude(), location.getLongitude());
-                Toast.makeText(getActivity(), "Here", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "Here", Toast.LENGTH_SHORT).show();
                 locationManager.removeUpdates(locationListener);
                 fillTheList();
                 //seeOnMapButton.setVisibility(View.VISIBLE);

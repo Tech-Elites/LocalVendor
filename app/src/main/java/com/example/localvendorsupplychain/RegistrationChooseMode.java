@@ -12,6 +12,7 @@ public class RegistrationChooseMode extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_choose_mode);
+        getSupportActionBar().hide();
     }
 
     public void RegisterAsUser(View view) {

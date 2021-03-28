@@ -49,7 +49,7 @@ public class RegistrationAsVendorTwo extends AppCompatActivity {
         if (requestCode == 1) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(this, "Permission granted", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(this, "Permission granted", Toast.LENGTH_SHORT).show();
                     searchFromCurrentLocation();
                 }
             }
@@ -61,7 +61,7 @@ public class RegistrationAsVendorTwo extends AppCompatActivity {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
-        Toast.makeText(this, "Here", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Here", Toast.LENGTH_SHORT).show();
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
     }
 
@@ -72,7 +72,7 @@ public class RegistrationAsVendorTwo extends AppCompatActivity {
             public void onLocationChanged(Location location) {
 
                 myLocation = new LatLng(location.getLatitude(), location.getLongitude());
-                Toast.makeText(RegistrationAsVendorTwo.this, ""+myLocation, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(RegistrationAsVendorTwo.this, ""+myLocation, Toast.LENGTH_SHORT).show();
                 locationManager.removeUpdates(locationListener);
                 TextView tvUpdate = findViewById(R.id.textView23);
                 tvUpdate.setText("Location Recorded.");
@@ -105,6 +105,7 @@ public class RegistrationAsVendorTwo extends AppCompatActivity {
         registerButton=findViewById(R.id.VendorRegisterSubmit);
         registerButton.setVisibility(View.INVISIBLE);
         auth= FirebaseAuth.getInstance();
+        getSupportActionBar().hide();
 
         Bundle b = getIntent().getExtras();
         firstname = b.getString("firstname");
@@ -150,7 +151,7 @@ public class RegistrationAsVendorTwo extends AppCompatActivity {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     if(user!=null)
                     {
-                        Toast.makeText(RegistrationAsVendorTwo.this, "User here", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(RegistrationAsVendorTwo.this, "User here", Toast.LENGTH_SHORT).show();
                         Vendor u=new Vendor(Double.toString(myLocation.latitude),Double.toString(myLocation.longitude),firstname,lastname,mobilenumber,email,shopname,homeaddress,shopaddress);
                         HashMap<String, Object> newUserCreds = u.AddDataToUserDataBase();
                         FirebaseDatabase.getInstance().getReference().child("userinfo").child("vendors").child(user.getUid()).setValue(newUserCreds);

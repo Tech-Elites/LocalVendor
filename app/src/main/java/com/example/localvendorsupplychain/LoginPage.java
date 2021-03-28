@@ -32,7 +32,7 @@ public class LoginPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
-
+        getSupportActionBar().hide();
         firebaseAuth = FirebaseAuth.getInstance();
 
         FirebaseUser u= firebaseAuth.getCurrentUser();
@@ -95,7 +95,7 @@ public class LoginPage extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful())
                     {
-                        Toast.makeText(LoginPage.this, "Logged in", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(LoginPage.this, "Logged in", Toast.LENGTH_SHORT).show();
                         FirebaseUser u= firebaseAuth.getCurrentUser();
                         if(u!=null)
                         {
