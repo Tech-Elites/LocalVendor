@@ -33,7 +33,7 @@
             android:id="@+id/textView8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#AF0000"
+            android:background="#0048B5"
             android:text="Choose a registration mode :" />
 
         <LinearLayout
@@ -51,6 +51,7 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/button"
                 android:onClick="RegisterAsUser"
+                android:textAllCaps="false"
                 android:text="User"
                 android:textSize="22dp" />
 
@@ -60,6 +61,7 @@
                 android:layout_height="116dp"
                 android:layout_margin="10dp"
                 android:background="@drawable/button"
+                android:textAllCaps="false"
                 android:onClick="RegisterAsVendor"
                 android:text="Vendor"
                 android:textSize="22dp" />
