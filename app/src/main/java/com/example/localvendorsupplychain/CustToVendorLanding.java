@@ -66,7 +66,7 @@ public class CustToVendorLanding extends AppCompatActivity {
         }
 
         address = addresses.get(0).getAddressLine(0);
-        Toast.makeText(this, address, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, address, Toast.LENGTH_SHORT).show();
         shopNameTextView.setText(shopname);
         addressTextView.setText(address);
         mobileNoTextView.setText(mobileNo);
@@ -83,7 +83,7 @@ public class CustToVendorLanding extends AppCompatActivity {
                     for(DataSnapshot snapshot1:snapshot.getChildren())
                     {
                         MenuClass m=snapshot1.getValue(MenuClass.class);
-                        Toast.makeText(CustToVendorLanding.this, ""+m.getDesc(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(CustToVendorLanding.this, ""+m.getDesc(), Toast.LENGTH_SHORT).show();
                         arrayList.add(m);
                     }
                     customAdapterMenu=new CustomAdapterMenu(getApplicationContext(),arrayList);

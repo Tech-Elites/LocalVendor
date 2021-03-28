@@ -200,7 +200,7 @@ public class VendorLanding extends AppCompatActivity {
 
     public void updateWorkingHours(String selectedStartTime, String selectedEndTime){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        Toast.makeText((VendorLanding.this), "Start: "+selectedStartTime+"\nEnd: "+selectedEndTime, Toast.LENGTH_SHORT).show();
+        //Toast.makeText((VendorLanding.this), "Start: "+selectedStartTime+"\nEnd: "+selectedEndTime, Toast.LENGTH_SHORT).show();
         FirebaseDatabase.getInstance().getReference().child("userinfo").child("vendors").child(user.getUid()).child("StartTime").setValue(selectedStartTime);
         FirebaseDatabase.getInstance().getReference().child("userinfo").child("vendors").child(user.getUid()).child("EndTime").setValue(selectedEndTime);
     }

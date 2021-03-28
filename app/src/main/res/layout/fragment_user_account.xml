@@ -26,15 +26,5 @@
             android:id="@+id/feedListView"
             android:layout_width="match_parent"
             android:layout_height="550dp" />
-        <TextView
-            android:id="@+id/promptIfNoPostAvailable"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pls wait while the feed is getting loaded!!"
-            android:ems="10"
-            android:textColor="@color/white"
-            android:background="#6F6CEC"
-            android:textSize="20dp"
-            android:padding="10dp"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

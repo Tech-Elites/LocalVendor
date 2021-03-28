@@ -87,7 +87,7 @@ public class UserAccountFragment extends Fragment {
         if (requestCode == 1) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(getActivity(), "Permission granted", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), "Permission granted", Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -171,7 +171,7 @@ public class UserAccountFragment extends Fragment {
             }
             catch (Exception e)
             {
-                Toast.makeText(getActivity(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
             return currentItemView;
@@ -184,7 +184,7 @@ public class UserAccountFragment extends Fragment {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Toast.makeText(getActivity(), "Here", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "Here", Toast.LENGTH_SHORT).show();
                 vendorIds.clear();
                 arrayList.clear();
                 //int i=0;
@@ -248,7 +248,7 @@ public class UserAccountFragment extends Fragment {
                         }
                         catch (Exception e)
                         {
-                            Toast.makeText(getActivity(), ""+e.getMessage(), Toast.LENGTH_LONG).show();
+                            //Toast.makeText(getActivity(), ""+e.getMessage(), Toast.LENGTH_LONG).show();
                         }
 
                         if(index==(vendorIds.size()-1))
@@ -262,7 +262,7 @@ public class UserAccountFragment extends Fragment {
                             }
                             catch(Exception e)
                             {
-                                Toast.makeText(getActivity(), ""+e.getMessage(), Toast.LENGTH_LONG).show();
+                                //Toast.makeText(getActivity(), ""+e.getMessage(), Toast.LENGTH_LONG).show();
                             }
                         }
                         else

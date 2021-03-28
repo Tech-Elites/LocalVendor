@@ -23,15 +23,17 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="wrap_content"
+                android:layout_width="124dp"
                 android:layout_height="150dp"
+                android:backgroundTint="#E35C5C"
                 android:layout_weight="1"
-                android:background="@drawable/ic_launcher_foreground" />
+                android:background="@drawable/ic_baseline_portrait_24" />
 
             <TextView
                 android:id="@+id/VendorLandShopName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:layout_weight="1"
                 android:paddingLeft="10dp"
                 android:text="- - - - - - - - - - "
@@ -41,6 +43,7 @@
         </LinearLayout>
 
         <TextView
+            android:padding="5dp"
             android:id="@+id/VendorLandName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -49,6 +52,7 @@
             android:textSize="20dp" />
 
         <TextView
+            android:padding="5dp"
             android:id="@+id/VendorLandShopAdd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,6 +61,7 @@
             android:textSize="20dp" />
 
         <TextView
+            android:padding="5dp"
             android:id="@+id/VendorLandContact"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -111,6 +116,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Current Menu:"
+            android:padding="5dp"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="20dp"/>
