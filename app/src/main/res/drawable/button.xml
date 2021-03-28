@@ -6,7 +6,10 @@
     <solid
         android:color="#E35C5C" >
     </solid>
-
+    <stroke
+        android:width="3dp"
+        android:color="#FF0000" >
+    </stroke>
 
     <!-- The radius makes the corners rounded -->
     <corners

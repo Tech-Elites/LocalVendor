@@ -23,6 +23,7 @@
             android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:text="Welcome to the app" />
 
         <TextView
@@ -35,6 +36,7 @@
             android:textAlignment="center"
             android:layout_height="wrap_content"
             android:background="#3082FF"
+            android:textColor="@color/white"
             android:text="Choose a registration mode :" />
 
         <LinearLayout
