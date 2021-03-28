@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#778AD2E8"
     tools:context=".VendorLanding">
 
     <LinearLayout
@@ -22,28 +23,29 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="1dp"
+                android:layout_width="wrap_content"
                 android:layout_height="150dp"
                 android:layout_weight="1"
-                android:background="@drawable/ic_launcher_foreground"
-                />
+                android:background="@drawable/ic_launcher_foreground" />
 
             <TextView
-                android:id="@+id/VendorLandName"
+                android:id="@+id/VendorLandShopName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:paddingLeft="10dp"
                 android:text="- - - - - - - - - - "
-                android:textSize="20dp" />
+                android:textColor="@color/black"
+                android:textSize="30dp" />
 
         </LinearLayout>
 
         <TextView
-            android:id="@+id/VendorLandShopName"
+            android:id="@+id/VendorLandName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="- - - - - - - - - - "
+            android:textColor="@color/black"
             android:textSize="20dp" />
 
         <TextView
@@ -51,6 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="- - - - - - - - - - "
+            android:textColor="@color/black"
             android:textSize="20dp" />
 
         <TextView
@@ -58,6 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="- - - - - - - - - - "
+            android:textColor="@color/black"
             android:textSize="20dp" />
 
         <Button
@@ -65,6 +69,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="updateLocationVendor"
+            android:background="@drawable/button"
+            android:layout_marginBottom="5dp"
             android:text="Update location" />
 
         <Button
@@ -72,25 +78,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="updateWorkingHours"
-            android:text="Update working hours" />
+            android:text="Update working hours"
+            android:background="@drawable/button"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
 
             <Button
                 android:id="@+id/button2"
                 android:layout_width="185dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button"
                 android:onClick="addMenu"
-                android:layout_marginRight="5dp"
                 android:text="Add new menu" />
 
             <Button
                 android:id="@+id/button10"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button"
                 android:layout_weight="1"
                 android:onClick="addNewPost"
                 android:layout_marginLeft="5dp"
@@ -102,13 +111,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Current Menu:"
+            android:textColor="@color/black"
+            android:textStyle="bold"
             android:textSize="20dp"/>
 
         <ListView
             android:id="@+id/listViewMenu"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
+            android:layout_height="match_parent"
+            android:background="@drawable/list_view_corner"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

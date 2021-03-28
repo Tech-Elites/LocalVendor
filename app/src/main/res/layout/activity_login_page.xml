@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/ic_bg_gradient"
+    android:background="#778AD2E8"
     android:weightSum="7" >
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,6 +38,7 @@
             android:layout_height="wrap_content"
             android:gravity="bottom"
             android:text="Login"
+            android:textColor="@color/black"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:textSize="45dp"
@@ -51,6 +52,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:textStyle="bold"
+            android:textColor="@color/black"
             android:text="Email Id"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -60,10 +62,10 @@
             <EditText
                 android:id="@+id/loginPageEmailId"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/text_box"
                 android:hint="abc@gmail.com"
-                android:textSize="23dp"
+                android:ems="10"
                 android:textStyle="bold"
                 android:padding="10dp"
                 android:layout_marginLeft="40dp"
@@ -77,19 +79,20 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 android:text="Password"/>
 
             <EditText
                 android:id="@+id/loginPagePassword"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
                 android:inputType="textPassword"
+                android:ems="10"
                 android:background="@drawable/text_box"
                 android:hint="Password"
                 android:padding="10dp"
-                android:textSize="25dp"
                 android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
@@ -98,7 +101,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp">
         <Button
-            android:backgroundTint="#D3D31E1E"
+            android:background="@drawable/button"
             android:id="@+id/LoginPageLoginButton"
             android:onClick="LoginPageLoginFunction"
             android:layout_width="150dp"
@@ -118,6 +121,7 @@
             android:textStyle="bold"
             android:layout_marginLeft="40dp"
             android:layout_weight="2"
+            android:textColor="@color/black"
             android:text="New User? Register Here!"/>
     </LinearLayout>
     <LinearLayout
@@ -125,7 +129,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp">
         <Button
-            android:backgroundTint="#D3D31E1E"
+            android:background="@drawable/button"
             android:id="@+id/LoginPageRegisterButton"
             android:layout_width="150dp"
             android:layout_height="wrap_content"

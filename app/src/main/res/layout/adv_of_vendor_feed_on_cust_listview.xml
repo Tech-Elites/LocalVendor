@@ -13,6 +13,7 @@
             android:id="@+id/shopNameCustomListCust"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:text="TextView"
             android:textSize="40dp"/>
 
@@ -22,6 +23,7 @@
             android:layout_height="wrap_content"
             android:text="TextView"
             android:textSize="16dp"
+            android:textColor="@color/black"
             android:padding="10dp"/>
 
         <TextView
@@ -30,6 +32,7 @@
             android:layout_height="wrap_content"
             android:text="TextView"
             android:textSize="16dp"
+            android:textColor="@color/black"
             android:padding="10dp"/>
 
         <TextView
@@ -38,6 +41,7 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:textSize="25dp"
+            android:textColor="@color/black"
             android:text="TextView" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

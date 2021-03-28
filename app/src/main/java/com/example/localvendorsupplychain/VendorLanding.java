@@ -88,9 +88,9 @@ public class VendorLanding extends AppCompatActivity {
                         shopaddresspass=v.shopaddress;
                         mobpass=v.mobileno;
                             name.setText(v.firstname+" "+v.lastname);
-                        shopname.setText("Shop name:    "+v.shopname);
-                         shopadd.setText("Shop Address: "+v.shopaddress);
-                         contact.setText("Contact:      "+v.mobileno);
+                        shopname.setText(v.shopname);
+                         shopadd.setText("Address: "+v.shopaddress);
+                         contact.setText("Contact: "+v.mobileno);
                     }
                     catch (Exception e){
                         System.out.println("SEAW"+e);

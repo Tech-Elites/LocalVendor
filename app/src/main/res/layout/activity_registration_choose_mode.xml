@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#AE7996B3"
+    android:background="#778AD2E8"
     tools:context=".RegistrationChooseMode">
 
     <LinearLayout
@@ -23,6 +23,7 @@
             android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:text="Welcome to the app" />
 
         <TextView
@@ -32,8 +33,10 @@
             android:layout_marginTop="30dp"
             android:id="@+id/textView8"
             android:layout_width="match_parent"
+            android:textAlignment="center"
             android:layout_height="wrap_content"
-            android:background="#AF0000"
+            android:background="#3082FF"
+            android:textColor="@color/white"
             android:text="Choose a registration mode :" />
 
         <LinearLayout
@@ -51,6 +54,7 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/button"
                 android:onClick="RegisterAsUser"
+                android:textAllCaps="false"
                 android:text="User"
                 android:textSize="22dp" />
 
@@ -60,6 +64,7 @@
                 android:layout_height="116dp"
                 android:layout_margin="10dp"
                 android:background="@drawable/button"
+                android:textAllCaps="false"
                 android:onClick="RegisterAsVendor"
                 android:text="Vendor"
                 android:textSize="22dp" />

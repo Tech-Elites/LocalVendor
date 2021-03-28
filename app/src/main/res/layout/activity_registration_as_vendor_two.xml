@@ -22,6 +22,7 @@
             android:gravity="center"
             android:textAlignment="center"
             android:textSize="30dp"
+            android:textColor="@color/black"
             android:paddingBottom="20dp"
             android:text="Contact Details" />
 
@@ -71,12 +72,13 @@
         <TextView
             android:id="@+id/textView23"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:ems="20"
             android:textSize="18dp"
             android:layout_marginTop="20dp"
             android:textAlignment="center"
-            android:text="Register button will pop up when we will get your location u can change this anytime u want!!" />
+            android:text="Register button will pop up when your location is determined. You can change it afterwards." />
 
         <Button
             android:id="@+id/VendorRegisterSubmit"
@@ -84,6 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="VendorRegisterSubmit"
+            android:background="@drawable/button"
             android:text="Register" />
 
     </LinearLayout>

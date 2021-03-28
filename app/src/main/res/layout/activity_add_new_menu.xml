@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#778AD2E8"
     tools:context=".addNewMenu">
 
     <LinearLayout
@@ -16,12 +17,16 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="18dp"
             android:text="Name of item" />
 
         <EditText
             android:id="@+id/NewMenuName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:ems="10"
             android:hint="Butter Chicken"
             android:inputType="textPersonName"
@@ -31,6 +36,10 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
             android:text="Description" />
 
         <EditText
@@ -45,12 +54,16 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
             android:text="Price" />
 
         <EditText
             android:id="@+id/NewMenuPrice"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:ems="10"
             android:hint="160"
             android:inputType="number" />
@@ -60,12 +73,17 @@
             android:id="@+id/NewMenuSwitch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Vegtatian" />
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:text="Vegetarian" />
 
         <Button
             android:id="@+id/button7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:layout_marginTop="15dp"
             android:onClick="addNewMenuToDB"
             android:text="Submit" />
     </LinearLayout>
