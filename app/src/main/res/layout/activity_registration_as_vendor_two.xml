@@ -77,7 +77,7 @@
             android:textSize="18dp"
             android:layout_marginTop="20dp"
             android:textAlignment="center"
-            android:text="Register button will pop up when we will get your location u can change this anytime u want!!" />
+            android:text="Register button will pop up when your location is determined. You can change it afterwards." />
 
         <Button
             android:id="@+id/VendorRegisterSubmit"

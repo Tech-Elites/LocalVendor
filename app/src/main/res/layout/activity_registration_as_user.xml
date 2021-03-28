@@ -7,28 +7,35 @@
     tools:context=".RegistrationAsUser">
 
     <LinearLayout
-        android:padding="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#778AD2E8"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
                 />
         </LinearLayout>
+
         <TextView
-            android:layout_marginTop="20dp"
             android:id="@+id/textView11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="First Name"
             android:textSize="18dp"
-            android:textStyle="bold"
-            android:text="First Name" />
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/UserRegisterFname"
@@ -39,12 +46,12 @@
 
         <TextView
             android:id="@+id/textView12"
-            android:textSize="18dp"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="Last Name" />
+            android:layout_marginTop="10dp"
+            android:text="Last Name"
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/UserRegisterLname"
@@ -52,17 +59,16 @@
             android:layout_height="50dp"
             android:hint="Lenon"
             android:inputType="textPersonName"
-            android:text=""
-            />
+            android:text="" />
 
         <TextView
             android:id="@+id/textView14"
-            android:textSize="18dp"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="Email" />
+            android:layout_marginTop="10dp"
+            android:text="Email"
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/UserRegisterEmail"
@@ -73,13 +79,13 @@
             android:inputType="textEmailAddress" />
 
         <TextView
-            android:textSize="18dp"
-            android:layout_marginTop="10dp"
             android:id="@+id/textView13"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="Password" />
+            android:layout_marginTop="10dp"
+            android:text="Password"
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/UserRegisterPassword"
@@ -89,13 +95,13 @@
             android:inputType="textPassword" />
 
         <TextView
-            android:textSize="18dp"
-            android:layout_marginTop="10dp"
             android:id="@+id/textView15"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="Confirm Password" />
+            android:layout_marginTop="10dp"
+            android:text="Confirm Password"
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/UserRegisterConfirmPassword"
@@ -105,13 +111,13 @@
             android:inputType="textPassword" />
 
         <TextView
-            android:textSize="18dp"
-            android:layout_marginTop="10dp"
             android:id="@+id/textView16"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="Mobile Number" />
+            android:layout_marginTop="10dp"
+            android:text="Mobile Number"
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/UserRegisterMobile"
@@ -123,10 +129,10 @@
 
         <Button
             android:id="@+id/button5"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button"
             android:onClick="UserRegisterSubmit"
             android:text="Register" />
     </LinearLayout>
