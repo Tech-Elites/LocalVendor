@@ -50,7 +50,14 @@ public class CustomAdapterMenu extends ArrayAdapter<MenuClass>{
         TextView textView3 = currentItemView.findViewById(R.id.MenuItemPrice);
         textView3.setText(String.valueOf(menuClass.getPrice()));
         TextView textView4 = currentItemView.findViewById(R.id.MenuItemVeg);
-        textView4.setText(String.valueOf(menuClass.getVeg()));
+        if(menuClass.getVeg().compareToIgnoreCase("yes")==0)
+        {
+            textView4.setText("Veg");
+        }
+        else
+        {
+            textView4.setText("Non veg");
+        }
 
         return currentItemView;
     }

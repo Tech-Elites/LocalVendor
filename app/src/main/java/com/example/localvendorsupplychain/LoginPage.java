@@ -56,7 +56,7 @@ public class LoginPage extends AppCompatActivity {
                     }
                     if(flag==1)
                     {
-                        Toast.makeText(LoginPage.this, "A vendor is here", Toast.LENGTH_SHORT).show();
+
                         //vendor code here
                         //for now signing out
                         Intent i = new Intent(LoginPage.this, VendorLanding.class);
@@ -117,7 +117,7 @@ public class LoginPage extends AppCompatActivity {
                                     }
                                     if(flag==1)
                                     {
-                                        Toast.makeText(LoginPage.this, "A vendor is here", Toast.LENGTH_SHORT).show();
+
                                         //vendor code here
                                         //for now signing out
                                         Intent i = new Intent(LoginPage.this, VendorLanding.class);

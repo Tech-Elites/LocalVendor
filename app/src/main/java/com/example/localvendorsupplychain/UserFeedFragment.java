@@ -105,7 +105,7 @@ public class UserFeedFragment extends Fragment {
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
-
+        Toast.makeText(getActivity(), "Here", Toast.LENGTH_SHORT).show();
         whether_name=false;
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
     }
@@ -280,13 +280,15 @@ public class UserFeedFragment extends Fragment {
         startActivity(new Intent(getActivity(),locationActivity.class));
     }
     void LocationServices() {
+
+
         locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
 
                 myLocation = new LatLng(location.getLatitude(), location.getLongitude());
-
+                Toast.makeText(getActivity(), "Here", Toast.LENGTH_SHORT).show();
                 locationManager.removeUpdates(locationListener);
                 fillTheList();
                 //seeOnMapButton.setVisibility(View.VISIBLE);

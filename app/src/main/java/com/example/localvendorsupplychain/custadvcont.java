@@ -11,6 +11,8 @@ public class custadvcont {
         this.desc = desc;
         this.mobileno=mobileno;
     }
+    custadvcont()
+    {}
 
     public String getAddresss() {
         return addresss;

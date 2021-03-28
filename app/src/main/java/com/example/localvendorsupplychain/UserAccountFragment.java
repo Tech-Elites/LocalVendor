@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -93,17 +94,29 @@ public class UserAccountFragment extends Fragment {
 
     }
     ListView lv;
-    custTomAdvadaptor custtomAddaptor;
+    custTomAdvAdaptor customAdaptor;
     ArrayList<custadvcont> arrayList=new ArrayList<>();
-    ArrayList<String> vendorIds;
+    ArrayList<String> vendorIds=new ArrayList<>();
     LocationManager locationManager;
     LocationListener locationListener;
     LatLng myLocation;
+    Button refreshField;
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         lv=getView().findViewById(R.id.feedListView);
+        refreshField=getView().findViewById(R.id.refreshFeedButton);
+        refreshField.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getLocation();
+            }
+        });
         getLocation();
+
+    }
+    void getLocation()
+    {
         LocationServices();
 
         if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -114,10 +127,6 @@ public class UserAccountFragment extends Fragment {
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
         }
     }
-    void getLocation()
-    {
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -125,10 +134,10 @@ public class UserAccountFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_user_account, container, false);
     }
-    public class custTomAdvadaptor extends ArrayAdapter<custadvcont> {
+    public class custTomAdvAdaptor extends ArrayAdapter<custadvcont> {
 
         // invoke the suitable constructor of the ArrayAdapter class
-        public custTomAdvadaptor(@NonNull Context context, ArrayList<custadvcont> arrayList) {
+        public custTomAdvAdaptor(@NonNull Context context, ArrayList<custadvcont> arrayList) {
 
             // pass the context and arrayList for the super
             // constructor of the ArrayAdapter class
@@ -144,30 +153,38 @@ public class UserAccountFragment extends Fragment {
 
             // of the recyclable view is null then inflate the custom layout for the same
             if (currentItemView == null) {
-                currentItemView = LayoutInflater.from(getContext()).inflate(R.layout.custom_list_view_menu, parent, false);
+                currentItemView = LayoutInflater.from(getContext()).inflate(R.layout.adv_of_vendor_feed_on_cust_listview, parent, false);
             }
-
             // get the position of the view from the ArrayAdapter
-            custadvcont adv = getItem(position);
+            try {
+                custadvcont adv = getItem(position);
 
-            TextView textView1 = currentItemView.findViewById(R.id.shopNameCustomListCust);
-            textView1.setText(adv.getShopnamee());
-            TextView textView2 = currentItemView.findViewById(R.id.advDescCustomListCust);
-            textView2.setText(adv.getDesc());
-            TextView textView3 = currentItemView.findViewById(R.id.shopAddCustToVendor);
-            textView3.setText(String.valueOf("Address "+adv.getAddresss()));
-            TextView textView4 = currentItemView.findViewById(R.id.mobileNodescCustomListCust);
-            textView4.setText(String.valueOf("Mobile no- "+adv.getMobileno()));
+                TextView textView1 = currentItemView.findViewById(R.id.shopNameCustomListCust);
+                textView1.setText(adv.getShopnamee());
+                TextView textView2 = currentItemView.findViewById(R.id.advDescCustomListCust);
+                textView2.setText(adv.getDesc());
+                TextView textView3 = currentItemView.findViewById(R.id.addressShopCustomListCust);
+                textView3.setText(("Address "+adv.getAddresss()));
+                TextView textView4 = currentItemView.findViewById(R.id.mobileNodescCustomListCust);
+                textView4.setText(("Mobile no- "+adv.getMobileno()));
+
+            }
+            catch (Exception e)
+            {
+                Toast.makeText(getActivity(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
 
             return currentItemView;
         }
     }
     void fillTheList()
     {
+
         DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("userinfo").child("vendors");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Toast.makeText(getActivity(), "Here", Toast.LENGTH_SHORT).show();
                 vendorIds.clear();
                 arrayList.clear();
                 //int i=0;
@@ -184,7 +201,7 @@ public class UserAccountFragment extends Fragment {
                     if(dis[0]<3000)
                     {
                         vendorIds.add(dataSnapshot.getKey());
-                        Toast.makeText(getActivity(), vendorIds.toString(), Toast.LENGTH_SHORT).show();
+
                         flag=1;
                     }
 
@@ -198,10 +215,14 @@ public class UserAccountFragment extends Fragment {
                     new AlertDialog.Builder(getActivity())
                             .setIcon(android.R.drawable.ic_dialog_alert)
                             .setTitle("Sorryy!!!")
-                            .setMessage("Cant find any restaurants!! Maybe try something else??")
+                            .setMessage("Cant find any take outs near u!! Maybe try something else??")
                             .setPositiveButton("Ok",null)
                             .show();
 
+                }
+                else
+                {
+                    gettingTheAdv(vendorIds,0);
                 }
 
             }
@@ -212,6 +233,52 @@ public class UserAccountFragment extends Fragment {
             }
         });
     }
+    void gettingTheAdv(ArrayList<String> vendorid,int index)
+    {
+            DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("vendoradv").child(vendorid.get(index));
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for(DataSnapshot snapshot1:snapshot.getChildren())
+                    {
+                        try {
+                            custadvcont c=snapshot1.getValue(custadvcont.class);
+
+                            arrayList.add(c);
+                        }
+                        catch (Exception e)
+                        {
+                            Toast.makeText(getActivity(), ""+e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+
+                        if(index==(vendorIds.size()-1))
+                        {
+
+                            //adaptor here
+                            try {
+                                customAdaptor=new custTomAdvAdaptor(getActivity(),arrayList);
+                                lv.setAdapter(customAdaptor);
+
+                            }
+                            catch(Exception e)
+                            {
+                                Toast.makeText(getActivity(), ""+e.getMessage(), Toast.LENGTH_LONG).show();
+                            }
+                        }
+                        else
+                        {
+                            gettingTheAdv(vendorid,index+1);
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+    }
+
     void LocationServices() {
         locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         locationListener = new LocationListener() {
