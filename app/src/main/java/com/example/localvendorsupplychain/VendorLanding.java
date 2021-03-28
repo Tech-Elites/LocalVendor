@@ -201,5 +201,8 @@ public class VendorLanding extends AppCompatActivity {
     }
 
 
-
+    public void addNewPost(View view) {
+        Intent i = new Intent(this, addNewPostVendor.class);
+        startActivity(i);
+    }
 }
