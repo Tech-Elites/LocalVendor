@@ -99,26 +99,30 @@ public class VendorLanding extends AppCompatActivity {
     }
 
     public void makeListView(){
-        DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("vendormenu").child(user.getUid());
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                arrayList.clear();
-                for(DataSnapshot snapshot1:snapshot.getChildren())
-                {
-                    MenuClass m=snapshot1.getValue(MenuClass.class);
+        try{
+            DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("vendormenu").child(user.getUid());
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    arrayList.clear();
+                    for(DataSnapshot snapshot1:snapshot.getChildren())
+                    {
+                        MenuClass m=snapshot1.getValue(MenuClass.class);
 
-                    arrayList.add(m);
+                        arrayList.add(m);
+                    }
+                    customAdapterMenu=new CustomAdapterMenu(getApplicationContext(),arrayList);
+                    listView.setAdapter(customAdapterMenu);
                 }
-                customAdapterMenu=new CustomAdapterMenu(getApplicationContext(),arrayList);
-                listView.setAdapter(customAdapterMenu);
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
+                }
+            });
+        }catch (Exception e){
+            System.out.println(e);
+        }
     }
 
     public void addMenu(View view){

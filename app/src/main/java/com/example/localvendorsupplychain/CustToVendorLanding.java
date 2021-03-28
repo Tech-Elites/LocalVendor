@@ -74,26 +74,31 @@ public class CustToVendorLanding extends AppCompatActivity {
     }
     void getMenu()
     {
-        DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("vendormenu").child(vendorId);
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                arrayList.clear();
-                for(DataSnapshot snapshot1:snapshot.getChildren())
-                {
-                    MenuClass m=snapshot1.getValue(MenuClass.class);
-                    Toast.makeText(CustToVendorLanding.this, ""+m.getDesc(), Toast.LENGTH_SHORT).show();
-                    arrayList.add(m);
+        try {
+            DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("vendormenu").child(vendorId);
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    arrayList.clear();
+                    for(DataSnapshot snapshot1:snapshot.getChildren())
+                    {
+                        MenuClass m=snapshot1.getValue(MenuClass.class);
+                        Toast.makeText(CustToVendorLanding.this, ""+m.getDesc(), Toast.LENGTH_SHORT).show();
+                        arrayList.add(m);
+                    }
+                    customAdapterMenu=new CustomAdapterMenu(getApplicationContext(),arrayList);
+                    listOfMenu.setAdapter(customAdapterMenu);
                 }
-                customAdapterMenu=new CustomAdapterMenu(getApplicationContext(),arrayList);
-                listOfMenu.setAdapter(customAdapterMenu);
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
+                }
+            });
+        }
+            catch (Exception e){
+            System.out.println(e);
+        }
     }
 
 }
