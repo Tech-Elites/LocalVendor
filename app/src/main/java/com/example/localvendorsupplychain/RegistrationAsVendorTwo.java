@@ -37,10 +37,11 @@ public class RegistrationAsVendorTwo extends AppCompatActivity {
     String firstname, lastname, email, shopname;
     String password, mobilenumber, homeaddress;
     String shopaddress="TEMP";
-    LocationManager locationManager;
-    LocationListener locationListener;
     Button registerButton;
     private FirebaseAuth auth;
+    LocationManager locationManager;
+    LocationListener locationListener;
+
     LatLng myLocation;
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

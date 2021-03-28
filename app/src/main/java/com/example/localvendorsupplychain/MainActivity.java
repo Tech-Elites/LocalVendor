@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -15,30 +16,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
+        new CountDownTimer(4000,1000)
+        {
+            public void onTick(long milliseconds)
+            {
 
-        FirebaseUser u = FirebaseAuth.getInstance().getCurrentUser();
-        if (u != null) {
-            //logged in
-        } else {
-            // go to login
-        }
-        //Main - login/sign in
-        //RegisterActivity - signup
-        //customer - fname lname mobile
-        //vendor - vendorName shopName shopAddress mobile (INSIDE-operatingHours, servicesProvided)
+            }
+            public void onFinish()
+            {
+                finish();
+                startActivity(new Intent(getApplicationContext(),LoginPage.class));
+            }
 
-        //i have changed here
-
-        //hello harshva
+        }.start();
 
     }
 
 
 
-    public void goToLogin(View view) {
-        Intent i = new Intent(this, LoginPage.class);
-        startActivity(i);
-    }
 
 
 

@@ -2,11 +2,19 @@ package com.example.localvendorsupplychain;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,6 +27,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.DatabaseReference;import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -41,6 +50,67 @@ public class VendorLanding extends AppCompatActivity {
     CustomAdapterMenu customAdapterMenu;
 
     String shopnamepass, shopaddresspass, mobpass;
+    LocationManager locationManager;
+    LocationListener locationListener;
+
+    LatLng myLocation;
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 1) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(this, "Permission granted", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        }
+
+    }
+
+    void searchFromCurrentLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        Toast.makeText(this, "Here", Toast.LENGTH_SHORT).show();
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+    }
+    void LocationServices() {
+        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        locationListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+
+                myLocation = new LatLng(location.getLatitude(), location.getLongitude());
+
+                locationManager.removeUpdates(locationListener);
+                FirebaseUser u= FirebaseAuth.getInstance().getCurrentUser();
+                if(u!=null)
+                {
+                    FirebaseDatabase.getInstance().getReference().child("userinfo").child("vendors").child(u.getUid()).child("lat").setValue(Double.toString(myLocation.latitude));
+                    FirebaseDatabase.getInstance().getReference().child("userinfo").child("vendors").child(u.getUid()).child("lng").setValue(Double.toString(myLocation.longitude));
+
+                }
+                Toast.makeText(VendorLanding.this, "Location updated", Toast.LENGTH_SHORT).show();
+                //call the function that can get the
+            }
+
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+
+            }
+
+            @Override
+            public void onProviderEnabled(String provider) {
+
+            }
+
+            @Override
+            public void onProviderDisabled(String provider) {
+
+            }
+        };
+    }
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater=getMenuInflater();
         menuInflater.inflate(R.menu.logout,menu);
@@ -66,6 +136,7 @@ public class VendorLanding extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vendor_landing);
+        LocationServices();
         listView = findViewById(R.id.listViewMenu);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -136,7 +207,7 @@ public class VendorLanding extends AppCompatActivity {
     }
 
     public void updateLocationVendor(View view) {
-
+        searchFromCurrentLocation();
     }
 
     public void updateWorkingHours(View view) {
