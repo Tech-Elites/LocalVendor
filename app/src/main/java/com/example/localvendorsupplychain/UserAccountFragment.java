@@ -166,9 +166,9 @@ public class UserAccountFragment extends Fragment {
                 TextView textView2 = currentItemView.findViewById(R.id.advDescCustomListCust);
                 textView2.setText(adv.getDesc());
                 TextView textView3 = currentItemView.findViewById(R.id.addressShopCustomListCust);
-                textView3.setText(("Address "+adv.getAddresss()));
+                textView3.setText(("Address: "+adv.getAddresss()));
                 TextView textView4 = currentItemView.findViewById(R.id.mobileNodescCustomListCust);
-                textView4.setText(("Mobile no- "+adv.getMobileno()));
+                textView4.setText(("Contact: "+adv.getMobileno()));
 
             }
             catch (Exception e)
