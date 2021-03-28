@@ -10,6 +10,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -17,12 +18,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class locationActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private LatLng userLocation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent=getIntent();
-        userLocation=new LatLng(intent.getDoubleExtra("Lat",0),intent.getDoubleExtra("Long",0));
+
 
         setContentView(R.layout.activity_location);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -46,9 +46,12 @@ public class locationActivity extends FragmentActivity implements OnMapReadyCall
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-
-        mMap.addMarker(new MarkerOptions().position(userLocation).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation,15));
+        mMap.addMarker(new MarkerOptions().position(UserFeedFragment.myLocation).title("You").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UserFeedFragment.myLocation,15));
+        for(int i=0;i<UserFeedFragment.vendorNames.size();i++)
+        {
+            mMap.addMarker(new MarkerOptions().position(UserFeedFragment.allTheLocations.get(i)).title(UserFeedFragment.vendorNames.get(i)));
+        }
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {

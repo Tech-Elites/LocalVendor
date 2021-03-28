@@ -16,6 +16,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginPage extends AppCompatActivity {
 
@@ -30,7 +35,42 @@ public class LoginPage extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
+        FirebaseUser u= firebaseAuth.getCurrentUser();
+        if(u!=null)
+        {
+            DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("userinfo").child("customers");
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    int flag=1;
+                    for(DataSnapshot dataSnapshot:snapshot.getChildren())
+                    {
+                        if(u.getUid().compareTo(dataSnapshot.getKey())==0)
+                        {
+                            flag=0;
+                            Intent i = new Intent(LoginPage.this, UserLandingPage.class);
+                            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(i);
+                            break;
+                        }
+                    }
+                    if(flag==1)
+                    {
+                        Toast.makeText(LoginPage.this, "A vendor is here", Toast.LENGTH_SHORT).show();
+                        //vendor code here
+                        //for now signing out
+                        Intent i = new Intent(LoginPage.this, VendorLanding.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(i);
+                    }
+                }
 
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
 
     }
 
@@ -56,11 +96,42 @@ public class LoginPage extends AppCompatActivity {
                     if(task.isSuccessful())
                     {
                         Toast.makeText(LoginPage.this, "Logged in", Toast.LENGTH_SHORT).show();
-                        finish();
-                        //change here
-                        Intent i = new Intent(getApplicationContext(),MainActivity.class);
-                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(i);
+                        FirebaseUser u= firebaseAuth.getCurrentUser();
+                        if(u!=null)
+                        {
+                            DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("userinfo").child("customers");
+                            databaseReference.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    int flag=1;
+                                    for(DataSnapshot dataSnapshot:snapshot.getChildren())
+                                    {
+                                        if(u.getUid().compareTo(dataSnapshot.getKey())==0)
+                                        {
+                                            flag=0;
+                                            Intent i = new Intent(LoginPage.this, UserLandingPage.class);
+                                            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                            startActivity(i);
+                                            break;
+                                        }
+                                    }
+                                    if(flag==1)
+                                    {
+                                        Toast.makeText(LoginPage.this, "A vendor is here", Toast.LENGTH_SHORT).show();
+                                        //vendor code here
+                                        //for now signing out
+                                        Intent i = new Intent(LoginPage.this, VendorLanding.class);
+                                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        startActivity(i);
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+                        }
                     }
                     else
                     {

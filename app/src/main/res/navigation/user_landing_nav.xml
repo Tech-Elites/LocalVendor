@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_landing_nav"
+    app:startDestination="@id/userSearchFragment">
+
+    <fragment
+        android:id="@+id/userSearchFragment"
+        android:name="com.example.localvendorsupplychain.UserFeedFragment"
+        android:label="fragment_user_feed"
+        tools:layout="@layout/fragment_user_feed" />
+    <fragment
+        android:id="@+id/userFeedFragment"
+        android:name="com.example.localvendorsupplychain.UserAccountFragment"
+        android:label="fragment_user_account"
+        tools:layout="@layout/fragment_user_account" />
+
+</navigation>
