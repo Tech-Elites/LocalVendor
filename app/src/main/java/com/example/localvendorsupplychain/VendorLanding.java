@@ -35,7 +35,7 @@ import java.util.Calendar;
 public class VendorLanding extends AppCompatActivity {
     private DatabaseReference mDatabase;
     String selectedStartTime, selectedEndTime;
-
+    FirebaseUser user;
     ListView listView;
     ArrayList<MenuClass>  arrayList = new ArrayList<>();
     CustomAdapterMenu customAdapterMenu;
@@ -66,7 +66,7 @@ public class VendorLanding extends AppCompatActivity {
         setContentView(R.layout.activity_vendor_landing);
         listView = findViewById(R.id.listViewMenu);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        user = FirebaseAuth.getInstance().getCurrentUser();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         TextView name = findViewById(R.id.VendorLandName);
         TextView shopname = findViewById(R.id.VendorLandShopName);
@@ -82,10 +82,10 @@ public class VendorLanding extends AppCompatActivity {
                     Vendor v = task.getResult().getValue(Vendor.class);
 
                     try {
-                        name.setText(v.firstname+" "+v.lastname);
-                        shopname.setText("Shop name: "+v.shopname);
-                        shopadd.setText("Shop Address: "+v.shopaddress);
-                        contact.setText("Contact: "+v.mobileno);
+                            name.setText(v.firstname+" "+v.lastname);
+                        shopname.setText("Shop name:    "+v.shopname);
+                         shopadd.setText("Shop Address: "+v.shopaddress);
+                         contact.setText("Contact:      "+v.mobileno);
                     }
                     catch (Exception e){
                         System.out.println("SEAW"+e);
@@ -99,10 +99,31 @@ public class VendorLanding extends AppCompatActivity {
     }
 
     public void makeListView(){
-        //MAKE IT DYNAMIC
-        arrayList.add(new MenuClass("PavBhaji","Butter",23,"yes"));
-        customAdapterMenu=new CustomAdapterMenu(this,arrayList);
-        listView.setAdapter(customAdapterMenu);
+        DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("vendormenu").child(user.getUid());
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                arrayList.clear();
+                for(DataSnapshot snapshot1:snapshot.getChildren())
+                {
+                    MenuClass m=snapshot1.getValue(MenuClass.class);
+
+                    arrayList.add(m);
+                }
+                customAdapterMenu=new CustomAdapterMenu(getApplicationContext(),arrayList);
+                listView.setAdapter(customAdapterMenu);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    public void addMenu(View view){
+        Intent i = new Intent(this, addNewMenu.class);
+        startActivity(i);
     }
 
     public void updateLocationVendor(View view) {
@@ -174,6 +195,7 @@ public class VendorLanding extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference().child("userinfo").child("vendors").child(user.getUid()).child("StartTime").setValue(selectedStartTime);
         FirebaseDatabase.getInstance().getReference().child("userinfo").child("vendors").child(user.getUid()).child("EndTime").setValue(selectedEndTime);
     }
+
 
 
 }
