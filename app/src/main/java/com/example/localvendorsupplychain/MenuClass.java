@@ -3,15 +3,17 @@ package com.example.localvendorsupplychain;
 public class MenuClass {
     private String name;
     private String desc;
-    private double price;
-    private boolean veg;
+    private float price;
+    private String veg;
 
-    public MenuClass(String name, String desc, double price, boolean veg) {
+    public MenuClass(String name, String desc, float price, String veg) {
         this.name = name;
         this.desc = desc;
         this.price = price;
         this.veg = veg;
     }
+    MenuClass()
+    {}
 
     public String getName() {
         return name;
@@ -21,11 +23,11 @@ public class MenuClass {
         return desc;
     }
 
-    public double getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public boolean isVeg() {
+    public String isVeg() {
         return veg;
     }
 }

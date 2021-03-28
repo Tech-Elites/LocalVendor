@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -36,7 +39,27 @@ public class VendorLanding extends AppCompatActivity {
     ListView listView;
     ArrayList<MenuClass>  arrayList = new ArrayList<>();
     CustomAdapterMenu customAdapterMenu;
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater=getMenuInflater();
+        menuInflater.inflate(R.menu.logout,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        super.onOptionsItemSelected(item);
+        switch(item.getItemId())
+        {
+            case R.id.Logout:
+                FirebaseAuth.getInstance().signOut();
+                finish();
+                startActivity(new Intent(this,LoginPage.class));
+                return  true;
+            default:
+                return false;
+        }
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,7 +100,7 @@ public class VendorLanding extends AppCompatActivity {
 
     public void makeListView(){
         //MAKE IT DYNAMIC
-        arrayList.add(new MenuClass("PavBhaji","Butter",23,true));
+        arrayList.add(new MenuClass("PavBhaji","Butter",23,"yes"));
         customAdapterMenu=new CustomAdapterMenu(this,arrayList);
         listView.setAdapter(customAdapterMenu);
     }

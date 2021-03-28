@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        startActivity(new Intent(this,UserLandingPage.class));
+
         FirebaseUser u = FirebaseAuth.getInstance().getCurrentUser();
         if (u != null) {
             //logged in
@@ -33,10 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void goToMap(View view) {
-        Intent i = new Intent(this, locationSearchActivity.class);
-        startActivity(i);
-    }
+
 
     public void goToLogin(View view) {
         Intent i = new Intent(this, LoginPage.class);
@@ -44,8 +41,5 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void goToVendorLanding(View view) {
-        Intent i = new Intent(this, VendorLanding.class);
-        startActivity(i);
-    }
+
 }

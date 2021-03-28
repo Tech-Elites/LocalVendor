@@ -48,7 +48,7 @@ public class CustomAdapterMenu extends ArrayAdapter<MenuClass>{
         TextView textView3 = currentItemView.findViewById(R.id.MenuItemPrice);
         textView3.setText(String.valueOf(menuClass.getPrice()));
         Switch textView4 = currentItemView.findViewById(R.id.MenuItemVeg);
-        if(menuClass.isVeg()){
+        if(menuClass.isVeg().compareToIgnoreCase("yes")==0){
             textView4.setChecked(true);
         }
 
