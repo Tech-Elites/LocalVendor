@@ -158,6 +158,7 @@ public class VendorLanding extends AppCompatActivity {
                     try {
                         shopnamepass=v.shopname;
                         shopaddresspass=v.shopaddress;
+
                         mobpass=v.mobileno;
                             name.setText(v.firstname+" "+v.lastname);
                         shopname.setText(v.shopname);

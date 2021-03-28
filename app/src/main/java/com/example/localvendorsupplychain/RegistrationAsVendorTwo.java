@@ -11,6 +11,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -32,6 +34,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.nio.Buffer;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 
 public class RegistrationAsVendorTwo extends AppCompatActivity {
     String firstname, lastname, email, shopname;
@@ -76,6 +80,19 @@ public class RegistrationAsVendorTwo extends AppCompatActivity {
                 locationManager.removeUpdates(locationListener);
                 TextView tvUpdate = findViewById(R.id.textView23);
                 tvUpdate.setText("Location Recorded.");
+                Geocoder geocoder;
+                List<Address> addresses=null;
+                geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
+                try {
+                    addresses = geocoder.getFromLocation(myLocation.latitude, myLocation.longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
+                }
+
+                shopaddress = addresses.get(0).getAddressLine(0);
                 registerButton.setVisibility(View.VISIBLE);
                 //call the function that can get the
             }
