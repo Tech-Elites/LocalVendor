@@ -6,15 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".UserAccountFragment">
 
-    <TextView
-        android:id="@+id/textView30"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textSize="20dp"
-        android:textColor="#000000"
-        android:text="Account"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/refreshFeedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Refresh"
+            android:textColor="@color/white"
+            android:background="@color/purple_500"
+            android:layout_marginBottom="20dp"/>
+
+        <ListView
+            android:id="@+id/feedListView"
+            android:layout_width="match_parent"
+            android:layout_height="570dp" />
+        <TextView
+            android:id="@+id/promptIfNoPostAvailable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pls wait while the feed is getting loaded!!"
+            android:textSize="20dp"
+            android:padding="10dp"/>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
