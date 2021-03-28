@@ -61,7 +61,7 @@
                 android:layout_height="60dp"
                 android:background="@drawable/text_box"
                 android:hint="abc@gmail.com"
-                android:textSize="23dp"
+                android:textSize="19dp"
                 android:textStyle="bold"
                 android:padding="10dp"
                 android:layout_marginLeft="40dp"
@@ -78,16 +78,16 @@
                 android:text="Password"/>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center">
                 <EditText
                     android:id="@+id/loginPagePassword"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:background="@drawable/text_box"
+                    android:inputType="textPassword"
                     android:hint="Password"
-                    android:textSize="23dp"
+                    android:textSize="19dp"
                     android:textStyle="bold"
                     android:padding="10dp"
                     android:layout_marginRight="40dp"

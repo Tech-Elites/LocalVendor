@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="#778AD2E8"
         tools:layout_editor_absoluteX="204dp"
         tools:layout_editor_absoluteY="207dp"
         android:padding="10dp">
@@ -18,6 +19,7 @@
             android:id="@+id/textView27"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:textAlignment="center"
             android:textSize="30dp"
             android:paddingBottom="20dp"
@@ -25,6 +27,9 @@
 
         <TextView
             android:id="@+id/textView21"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Contact Number" />
@@ -32,13 +37,16 @@
         <EditText
             android:id="@+id/VendorMobile"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:ems="10"
             android:hint="9182393243"
             android:inputType="phone" />
 
         <TextView
             android:id="@+id/textView22"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Home Address" />
@@ -46,27 +54,33 @@
         <EditText
             android:id="@+id/VendorHomeAddress"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="" />
 
         <TextView
             android:id="@+id/textView24"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Shop Address" />
 
-
         <TextView
             android:id="@+id/textView23"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_marginTop="20dp"
             android:textAlignment="center"
             android:text="Register button will pop up when we will get your location u can change this anytime u want!!" />
 
         <Button
             android:id="@+id/VendorRegisterSubmit"
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="VendorRegisterSubmit"
